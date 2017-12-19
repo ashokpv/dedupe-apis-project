@@ -3,3 +3,4 @@ unidecode
 future
 pandas
 dedupe
+dedupe-variables-address

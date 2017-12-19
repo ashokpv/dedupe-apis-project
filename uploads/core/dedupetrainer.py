@@ -47,10 +47,15 @@ class Dedupetrainer(object):
                 data_d[row_id] = dict(clean_row)
       except :
         a = pd.read_csv(filename)
-        #df_new = a[a[['DBA','BUS_ADDR','BUS_ADDR_CITY','BUS_ST_CODE','BUS_ADDR_ZIP','BUS_CNTRY_CDE','EMAIL_ADDR','WEBSITE','BUS_PHNE_NBR']].notnull()]
-        a = a .applymap(str)
-        data_d = a.to_dict(orient="index")
-      return data_d
+        if 'Id' in a.columns:
+            #df_new = a[a[['DBA','BUS_ADDR','BUS_ADDR_CITY','BUS_ST_CODE','BUS_ADDR_ZIP','BUS_CNTRY_CDE','EMAIL_ADDR','WEBSITE','BUS_PHNE_NBR']].notnull()]
+            a = a .applymap(str)
+            data_d = a.to_dict(orient="index")
+            return data_d
+        else:
+            msg = "Your file does not have column as Id"
+            print("ERROR -----------", msg)
+            return msg
     
     @staticmethod    
     def train(input_file,train_sample,fields):
