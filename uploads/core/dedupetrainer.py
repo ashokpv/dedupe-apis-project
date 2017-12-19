@@ -51,11 +51,11 @@ class Dedupetrainer(object):
             #df_new = a[a[['DBA','BUS_ADDR','BUS_ADDR_CITY','BUS_ST_CODE','BUS_ADDR_ZIP','BUS_CNTRY_CDE','EMAIL_ADDR','WEBSITE','BUS_PHNE_NBR']].notnull()]
             a = a .applymap(str)
             data_d = a.to_dict(orient="index")
-            return data_d
+            
         else:
-            msg = "Your file does not have column as Id"
-            print("ERROR -----------", msg)
-            return msg
+            data_d = "Your file does not have column as Id"
+            print("ERROR -----------", data_d)
+      return data_d
     
     @staticmethod    
     def train(input_file,train_sample,fields):
